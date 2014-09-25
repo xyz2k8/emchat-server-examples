@@ -118,7 +118,7 @@ public class EasemobMessages {
 		}
 
 		// check properties that must be provided
-		if ("users".equals(targetType) || "chatgroups".equals(targetType)) {
+		if (!("users".equals(targetType) || "chatgroups".equals(targetType))) {
 			LOGGER.error("TargetType must be users or chatgroups .");
 
 			objectNode.put("message", "TargetType must be users or chatgroups .");
