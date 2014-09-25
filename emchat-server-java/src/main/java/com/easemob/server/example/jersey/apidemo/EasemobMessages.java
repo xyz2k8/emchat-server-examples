@@ -141,7 +141,7 @@ public class EasemobMessages {
 			webTarget = EndPoints.MESSAGES_TARGET.resolveTemplate("org_name", APPKEY.split("#")[0]).resolveTemplate(
 					"app_name", APPKEY.split("#")[1]);
 
-			objectNode = JerseyUtils.sendRequest(webTarget, null, credentail, HTTPMethod.METHOD_POST, null);
+			objectNode = JerseyUtils.sendRequest(webTarget, dataNode, credentail, HTTPMethod.METHOD_POST, null);
 
 			objectNode = (ObjectNode) objectNode.get("data");
 			for (int i = 0; i < target.length; i++) {
