@@ -43,7 +43,7 @@ public class EasemobMessages {
 		ObjectNode objectNode = factory.objectNode();
 
 		// check appKey format
-		if (!JerseyUtils.match("[0-9a-zA-Z]+#[0-9a-zA-Z]+", APPKEY)) {
+		if (!JerseyUtils.match("^(?!-)[0-9a-zA-Z\\-]+#[0-9a-zA-Z]+", APPKEY)) {
 			LOGGER.error("Bad format of Appkey: " + APPKEY);
 
 			objectNode.put("message", "Bad format of Appkey");
@@ -109,7 +109,7 @@ public class EasemobMessages {
 		ObjectNode dataNode = factory.objectNode();
 
 		// check appKey format
-		if (!JerseyUtils.match("[0-9a-zA-Z]+#[0-9a-zA-Z]+", APPKEY)) {
+		if (!JerseyUtils.match("^(?!-)[0-9a-zA-Z\\-]+#[0-9a-zA-Z]+", APPKEY)) {
 			LOGGER.error("Bad format of Appkey: " + APPKEY);
 
 			objectNode.put("message", "Bad format of Appkey");
