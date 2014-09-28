@@ -11,6 +11,7 @@ import com.easemob.server.example.jersey.utils.JerseyUtils;
 import com.easemob.server.example.jersey.vo.Credentail;
 import com.easemob.server.example.jersey.vo.EndPoints;
 import com.easemob.server.example.jersey.vo.UsernamePasswordCredentail;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -320,7 +321,7 @@ public class EasemobChatGroups {
 
 		return objectNode;
 	}
-	
+
 	public static void main(String[] args) {
 		ObjectNode dataObjectNode = JsonNodeFactory.instance.objectNode();
 		dataObjectNode.put("groupname", "测试群组");
