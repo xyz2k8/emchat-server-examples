@@ -505,8 +505,9 @@ public class EasemobIMUsers {
 
 			URL addFriendSingleUrl = HTTPClientUtils.getURL(Constants.APPKEY.replace("#", "/") + "/users/"
 					+ ownerUserPrimaryKey + "/contacts/users/" + friendUserPrimaryKey);
-
-			objectNode = HTTPClientUtils.sendHTTPRequest(addFriendSingleUrl, credentail, null, HTTPMethod.METHOD_POST);
+			
+			ObjectNode body = factory.objectNode();
+			objectNode = HTTPClientUtils.sendHTTPRequest(addFriendSingleUrl, credentail, body, HTTPMethod.METHOD_POST);
 
 		} catch (Exception e) {
 			e.printStackTrace();
