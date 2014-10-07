@@ -152,7 +152,7 @@ public class EasemobChatGroups {
 
 			return objectNode;
 		}
-		if (!dataObjectNode.has("members") || dataObjectNode.path("members").isArray()) {
+		if (!dataObjectNode.has("members") || !dataObjectNode.path("members").isArray()) {
 			LOGGER.error("Property that named members must be provided .");
 
 			objectNode.put("message", "Property that named members must be provided .");
