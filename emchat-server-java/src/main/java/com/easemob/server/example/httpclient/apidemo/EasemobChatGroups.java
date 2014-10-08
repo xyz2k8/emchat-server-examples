@@ -268,7 +268,9 @@ public class EasemobChatGroups {
 			URL allMemberssByGroupIdUrl = HTTPClientUtils.getURL(Constants.APPKEY.replace("#", "/") + "/chatgroups/"
 					+ chatgroupid + "/users");
 
-			objectNode = HTTPClientUtils.sendHTTPRequest(allMemberssByGroupIdUrl, credentail, null,
+			ObjectNode dataobjectNode = factory.objectNode();
+			
+			objectNode = HTTPClientUtils.sendHTTPRequest(allMemberssByGroupIdUrl, credentail, dataobjectNode,
 					HTTPMethod.METHOD_POST);
 
 		} catch (Exception e) {

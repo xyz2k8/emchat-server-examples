@@ -12,6 +12,7 @@ import com.easemob.server.example.jersey.utils.JerseyUtils;
 import com.easemob.server.example.jersey.vo.Credentail;
 import com.easemob.server.example.jersey.vo.EndPoints;
 import com.easemob.server.example.jersey.vo.UsernamePasswordCredentail;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -101,7 +102,7 @@ public class EasemobMessages {
 	 * 
 	 * @return 请求响应
 	 */
-	public static ObjectNode sendMessages(String targetType, String[] target, ObjectNode msg, String from,
+	public static ObjectNode sendMessages(String targetType, ArrayNode target, ObjectNode msg, String from,
 			ObjectNode ext) {
 
 		ObjectNode objectNode = factory.objectNode();
@@ -144,12 +145,12 @@ public class EasemobMessages {
 			objectNode = JerseyUtils.sendRequest(webTarget, dataNode, credentail, HTTPMethod.METHOD_POST, null);
 
 			objectNode = (ObjectNode) objectNode.get("data");
-			for (int i = 0; i < target.length; i++) {
-				String resultStr = objectNode.path(target[i]).asText();
+			for (int i = 0; i < target.size(); i++) {
+				String resultStr = objectNode.path(target.path(i).asText()).asText();
 				if ("success".equals(resultStr)) {
-					LOGGER.error(String.format("Message has been send to user[%s] successfully .", target[i]));
+					LOGGER.error(String.format("Message has been send to user[%s] successfully .", target.path(i).asText()));
 				} else if (!"success".equals(resultStr)) {
-					LOGGER.error(String.format("Message has been send to user[%s] failed .", target[i]));
+					LOGGER.error(String.format("Message has been send to user[%s] failed .", target.path(i).asText()));
 				}
 			}
 
